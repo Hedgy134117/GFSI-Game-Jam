@@ -18,6 +18,7 @@ public class RoomManager : MonoBehaviour
         if (canvasContainer != null) {
             canvasContainer.SetActive(active);
         }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

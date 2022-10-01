@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6715688cf8883b441b62ff831df29e21, type: 3}
-  m_Name: Hub
+  m_Script: {fileID: 11500000, guid: 9046cc0dcef32ce4ab8a5bed1a7a8166, type: 3}
+  m_Name: DialogueGood
   m_EditorClassIdentifier: 
-  north:
-    m_Handle: 0
-  east:
-    m_Handle: 0
-  south:
-    m_Handle: 0
-  west:
-    m_Handle: 0
+  dialogue:
+    text:
+    - yes
+    portrait: {fileID: 21300000, guid: be67a0b2b51fc734a8605591f528ec54, type: 3}
+    options: []
+    optionsToDialogue: []
