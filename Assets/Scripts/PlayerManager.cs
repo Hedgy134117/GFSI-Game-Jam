@@ -6,4 +6,5 @@ using TMPro;
 public class PlayerManager : MonoBehaviour
 {
     public DialogueManager dialogueManager;
+    public TaskManager taskManager;
 }

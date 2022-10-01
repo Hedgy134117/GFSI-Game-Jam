@@ -22,11 +22,15 @@ public class RoomManager : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        setActiveChildren(true);
-        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
+        if (other.tag == "Player") {
+            setActiveChildren(true);
+            Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
+        } 
     }
 
     private void OnTriggerExit2D(Collider2D other) {
-        setActiveChildren(false);
+        if (other.tag == "Player") {
+            setActiveChildren(false);
+        }
     }
 }

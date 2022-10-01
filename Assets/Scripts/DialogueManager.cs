@@ -6,6 +6,7 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField] private GameObject textBackground;
     [SerializeField] private TMP_Text currentText;
     [SerializeField] private Image currentPortrait;
     [SerializeField] private GameObject optionsContainer;
@@ -17,6 +18,7 @@ public class DialogueManager : MonoBehaviour
         this.dialogueSO = dialogue;
     }
     public void startDialogue() {
+        textBackground.SetActive(true);
         currentText.gameObject.SetActive(true);
         currentPortrait.gameObject.SetActive(true);
         currentPortrait.sprite = dialogueSO.dialogue.portrait;
@@ -30,7 +32,10 @@ public class DialogueManager : MonoBehaviour
             }
             // otherwise show the options
             else {
-                startOptions();
+                // only start options if they don't exist yet
+                if (optionsContainer.transform.childCount == 0) {
+                    startOptions();
+                }
             }
             return;
         }
@@ -38,6 +43,7 @@ public class DialogueManager : MonoBehaviour
         index++;
     }
     public void stopDialogue() {
+        textBackground.SetActive(false);
         currentText.gameObject.SetActive(false);
         currentPortrait.gameObject.SetActive(false);
         Transform[] optionButtons = optionsContainer.GetComponentsInChildren<Transform>();
@@ -53,7 +59,6 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void startOptions() {
-        // foreach (var option in dialogueSO.dialogue.options) {
         for (int i = 0; i < dialogueSO.dialogue.options.Count; i++) {
             string option = dialogueSO.dialogue.options[i];
             DialogueScriptableObject optionToDialogue = dialogueSO.dialogue.optionsToDialogue[i];
@@ -65,7 +70,7 @@ public class DialogueManager : MonoBehaviour
         }
         // flexbox like look
         optionsContainer.GetComponent<HorizontalLayoutGroup>().childControlWidth = true;
-        optionsContainer.GetComponent<HorizontalLayoutGroup>().childControlWidth = false;
+        optionsContainer.GetComponent<HorizontalLayoutGroup>().childControlHeight = true;
     }
 
     public bool isDialogueActive() {

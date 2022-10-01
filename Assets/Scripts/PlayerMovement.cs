@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerManager playerManager;
     private bool isTouchingInteractableObject;
+    public bool canMove = true;
 
     private void Start() {
         playerManager = gameObject.GetComponent<PlayerManager>();
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!playerManager.dialogueManager.isDialogueActive()) {
+        if (!playerManager.dialogueManager.isDialogueActive() && !playerManager.taskManager.taskListIsVisible) {
             horizontal = Input.GetAxisRaw("Horizontal");
             vertical = Input.GetAxisRaw("Vertical");
         }

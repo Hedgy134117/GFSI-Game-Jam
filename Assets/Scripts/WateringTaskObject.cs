@@ -17,7 +17,8 @@ public class WateringTaskObject : MonoBehaviour
 
     public void water() {
         isWatered = true;
-        gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        Color c = new Color(150 / 255f, 188 / 255f, 255 / 255f, 255 / 255f);
+        gameObject.GetComponent<SpriteRenderer>().color = c;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
