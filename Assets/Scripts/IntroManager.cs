@@ -6,11 +6,26 @@ public class IntroManager : MonoBehaviour
 {
     [SerializeField] DialogueManager dialogueManager;
     [SerializeField] DialogueScriptableObject introDialogue;
+    [SerializeField] DialogueScriptableObject dayTwoDialogue;
+    [SerializeField] DialogueScriptableObject dayThreeDialogue;
     [SerializeField] GameObject partner;
     [SerializeField] GameObject taskList;
+    [SerializeField] TaskManager taskManager;
 
-    private void Start() {
-        dialogueManager.updateDialogue(introDialogue);
+    public void showDay(int day) {
+        DialogueScriptableObject dialogue = null;
+        switch (day) {
+            case 1:
+                dialogue = introDialogue;
+                break;
+            case 2:
+                dialogue = dayTwoDialogue;
+                break;
+            case 3:
+                dialogue = dayThreeDialogue;
+                break;
+        }
+        dialogueManager.updateDialogue(dialogue);
         dialogueManager.startDialogue();
     }
 
