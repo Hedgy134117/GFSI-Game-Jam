@@ -19,10 +19,10 @@ public class TaskManager : MonoBehaviour
                 tasks = new List<string> {"Water the Pineapples"};
                 break;
             case 2:
-                tasks = new List<string> {"Water the Pineapples", "Do math"};
+                tasks = new List<string> {"Water the Pineapples", "Do Math Research"};
                 break;
             case 3:
-                tasks = new List<string> {"Water the Pineapples", "Do math", "Brew coffee"};
+                tasks = new List<string> {"Water the Pineapples", "Do Math Research", "Brew Coffee"};
                 break;
         }
 
@@ -32,6 +32,8 @@ public class TaskManager : MonoBehaviour
         }
         GameObject hintText = Instantiate(taskTextPrefab, taskListPanel.transform);
         hintText.GetComponent<TMP_Text>().text = "(press space to close)";
+        tasksToComplete = tasks.Count;
+        tasksCompleted = 0;
     }
 
     public void completeTask() {
