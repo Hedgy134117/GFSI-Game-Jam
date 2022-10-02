@@ -10,4 +10,5 @@ public class Dialogue
     public Sprite portrait;
     public List<string> options;
     public List<DialogueScriptableObject> optionsToDialogue;
+    public DialogueScriptableObject nextDialogue;
 }

@@ -26,6 +26,10 @@ public class TaskManager : MonoBehaviour
                 break;
         }
 
+        foreach (Transform transform in taskListPanel.GetComponentInChildren<Transform>()) {
+            Destroy(transform.gameObject);
+        }
+
         foreach (var task in tasks) {
             GameObject taskText = Instantiate(taskTextPrefab, taskListPanel.transform);
             taskText.GetComponent<TMP_Text>().text = task;
@@ -39,6 +43,10 @@ public class TaskManager : MonoBehaviour
     public void completeTask() {
         tasksCompleted++;
         Debug.Log("TASK COMPLETED");
+    }
+
+    public bool isFinished() {
+        return tasksCompleted >= tasksToComplete;
     }
 
     private void Update() {

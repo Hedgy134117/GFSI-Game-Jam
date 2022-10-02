@@ -30,6 +30,11 @@ public class DialogueManager : MonoBehaviour
             if (dialogueSO.dialogue.options.Count == 0) {
                 stopDialogue();
             }
+            if (dialogueSO.dialogue.nextDialogue != null) {
+                stopDialogue();
+                updateDialogue(dialogueSO.dialogue.nextDialogue);
+                startDialogue();
+            }
             // otherwise show the options
             else {
                 // only start options if they don't exist yet

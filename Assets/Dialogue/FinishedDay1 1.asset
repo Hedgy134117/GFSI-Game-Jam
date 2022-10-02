@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9046cc0dcef32ce4ab8a5bed1a7a8166, type: 3}
+  m_Name: FinishedDay1 1
+  m_EditorClassIdentifier: 
+  dialogue:
+    text:
+    - "You did \u2026 good"
+    portrait: {fileID: 21300000, guid: a9331b3ac6da33e4aae06229ef099248, type: 3}
+    options: []
+    optionsToDialogue: []
+    nextDialogue: {fileID: 11400000, guid: 2fc8dc97674303b49b4cd86667e897b3, type: 2}
