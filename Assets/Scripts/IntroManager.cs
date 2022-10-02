@@ -10,7 +10,6 @@ public class IntroManager : MonoBehaviour
     [SerializeField] DialogueScriptableObject dayThreeDialogue;
     [SerializeField] GameObject partner;
     [SerializeField] GameObject taskList;
-    [SerializeField] TaskManager taskManager;
 
     public void showDay(int day) {
         DialogueScriptableObject dialogue = null;

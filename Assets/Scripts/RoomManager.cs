@@ -6,6 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject canvasContainer = null;
+    [SerializeField] bool dontUnload;
 
     private void Start() {
         setActiveChildren(false);
@@ -30,7 +31,9 @@ public class RoomManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.tag == "Player") {
-            setActiveChildren(false);
+            if (dontUnload == false) {
+                setActiveChildren(false);
+            }
         }
     }
 }
