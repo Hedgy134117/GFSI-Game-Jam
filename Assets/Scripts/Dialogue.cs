@@ -11,4 +11,6 @@ public class Dialogue
     public List<string> options;
     public List<DialogueScriptableObject> optionsToDialogue;
     public DialogueScriptableObject nextDialogue;
+    public bool goToNextDay;
+    public bool endGame;
 }

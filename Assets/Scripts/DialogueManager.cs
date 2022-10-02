@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -12,12 +13,14 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject optionsContainer;
     [SerializeField] private GameObject optionButtonPrefab; 
     [SerializeField] private DialogueScriptableObject dialogueSO;
-    [SerializeField] private int index = 0;
+    [SerializeField] public int index = 0;
+    [SerializeField] DayManager dayManager;
 
     public void updateDialogue(DialogueScriptableObject dialogue) {
         this.dialogueSO = dialogue;
     }
     public void startDialogue() {
+        index = 0;
         textBackground.SetActive(true);
         currentText.gameObject.SetActive(true);
         currentPortrait.gameObject.SetActive(true);
@@ -30,17 +33,20 @@ public class DialogueManager : MonoBehaviour
             if (dialogueSO.dialogue.options.Count == 0) {
                 stopDialogue();
             }
-            if (dialogueSO.dialogue.nextDialogue != null) {
-                stopDialogue();
-                updateDialogue(dialogueSO.dialogue.nextDialogue);
-                startDialogue();
-            }
             // otherwise show the options
             else {
                 // only start options if they don't exist yet
                 if (optionsContainer.transform.childCount == 0) {
                     startOptions();
                 }
+            }
+            if (dialogueSO.dialogue.nextDialogue != null) {
+                stopDialogue();
+                updateDialogue(dialogueSO.dialogue.nextDialogue);
+                startDialogue();
+            }
+            if (dialogueSO.dialogue.endGame) {
+                SceneManager.LoadScene("TitleScene");
             }
             return;
         }
@@ -61,9 +67,14 @@ public class DialogueManager : MonoBehaviour
             }
         }
         index = 0;
+        if (dialogueSO.dialogue.goToNextDay) {
+            dayManager = GameObject.FindObjectOfType<DayManager>();
+            dayManager.transitioning = true;
+        }
     }
 
     public void startOptions() {
+        GameObject.Find("FadeToBlack").SetActive(false);
         for (int i = 0; i < dialogueSO.dialogue.options.Count; i++) {
             string option = dialogueSO.dialogue.options[i];
             DialogueScriptableObject optionToDialogue = dialogueSO.dialogue.optionsToDialogue[i];

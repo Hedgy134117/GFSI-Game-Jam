@@ -30,9 +30,11 @@ public class TaskManager : MonoBehaviour
             Destroy(transform.gameObject);
         }
 
+        GameObject titleText = Instantiate(taskTextPrefab, taskListPanel.transform);
+        titleText.GetComponent<TMP_Text>().text = "Task List:";
         foreach (var task in tasks) {
             GameObject taskText = Instantiate(taskTextPrefab, taskListPanel.transform);
-            taskText.GetComponent<TMP_Text>().text = task;
+            taskText.GetComponent<TMP_Text>().text = "- " + task;
         }
         GameObject hintText = Instantiate(taskTextPrefab, taskListPanel.transform);
         hintText.GetComponent<TMP_Text>().text = "(press space to close)";

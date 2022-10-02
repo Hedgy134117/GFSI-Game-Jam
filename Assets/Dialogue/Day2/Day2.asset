@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9046cc0dcef32ce4ab8a5bed1a7a8166, type: 3}
-  m_Name: Dialogue
+  m_Name: Day2
   m_EditorClassIdentifier: 
   dialogue:
     text:
-    - Hello
-    - How are you?
-    portrait: {fileID: 21300000, guid: be67a0b2b51fc734a8605591f528ec54, type: 3}
-    options:
-    - good
-    - bad
-    optionsToDialogue:
-    - {fileID: 11400000, guid: 3648a9be026536042869351f21fe121d, type: 2}
-    - {fileID: 11400000, guid: 2a44558c987e70e44baebe2b8f466f4d, type: 2}
+    - "Good morning! You forgot to grab me a coffee before I woke up, but that\u2019s
+      okay!"
+    - "I\u2019m not mad, just\u2026 do better."
+    portrait: {fileID: 21300000, guid: a9331b3ac6da33e4aae06229ef099248, type: 3}
+    options: []
+    optionsToDialogue: []
+    nextDialogue: {fileID: 11400000, guid: 6d173991258df154bb1bd3ae2c933cae, type: 2}
+    goToNextDay: 0
